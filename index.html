@@ -125,7 +125,7 @@
   <input type="text" id="codigoPedido" readonly>
 </label>
   <label>Loja:
-    <input type="text" id="loja" style="text-transform: uppercase;" placeholder="Digite o nome da sua loja..." oninput="this.value = this.value.toUpperCase();" list="lojas" required>
+    <input type="text" id="loja" style="text-transform: uppercase;" placeholder="Digite o nome da sua loja" oninput="this.value = this.value.toUpperCase();" list="lojas" required>
     <datalist id="lojas">
       <option value="JULIARTY">
       <option value="NORTE SUL">
@@ -135,7 +135,7 @@
   </label>
 
   <label>Referência:
-    <input type="text" id="cliente" style="text-transform: uppercase;" placeholder="Digite o nome do seu cliente ou seu pedido interno..." oninput="this.value = this.value.toUpperCase();" required>
+    <input type="text" id="cliente" style="text-transform: uppercase;" placeholder="Digite o nome do seu cliente ou pedido" oninput="this.value = this.value.toUpperCase();" required>
   </label>
 
   <div style="display: flex; gap: 20px;">
@@ -148,11 +148,11 @@
 
 <div class="container">
   <div class="form-section">
-    <h2>Informações do Item</h2>
+    <h2>Informações da Cortina</h2>
     <form id="itemForm" autocomplete="off">
       <label>Modelo:
         <select id="modelo" required>
-          <option value="">Selecione</option>
+          <option value="">SELECIONE O MODELO DA CORTINA</option>
           <option>WAVE</option>
           <option>AMERICANA</option>
           <option>MACHO</option>
@@ -166,7 +166,7 @@
 
       <label>Proporção:
         <select id="proporcao" required>
-          <option value="">Selecione</option>
+          <option value="">SELECIONE A PROPORÇÃO DE TECIDO</option>
           <option>1.0</option>
           <option>1.5</option>
           <option>2.0</option>
@@ -177,7 +177,7 @@
 
       <label>Sistema de Fixação:
         <select id="fixacao" required>
-          <option value="">Selecione</option>
+          <option value="">SELECIONE O SISTEMA DE FIXAÇÃO</option>
           <option>TRILHO SIMPLES</option>
           <option>TRILHO DUPLO</option>
           <option>TRILHO TUBULAR</option>
@@ -188,23 +188,23 @@
 
       <label>Abertura:
         <select id="abertura" required>
-          <option value="">Selecione</option>
+          <option value="">SELECIONE O TIPO DE ABERTURA</option>
           <option>CENTRAL</option>
           <option>LATERAL</option>
         </select>
       </label>
 
       <div style="display: flex; gap: 20px">
-        <label style="flex: 1;">Largura (m):
-          <input type="number" id="largura" step="0.01" min="0" max="10" placeholder="Ex: 3.50" required>
+        <label style="flex: 1;">Largura (em metros):
+          <input type="number" id="largura" step="0.01" min="0" max="10" placeholder="EX: 2.80" required>
         </label>
-        <label style="flex: 1;">Altura (m):
-          <input type="number" id="altura" step="0.01" min="0" max="10" placeholder="Ex: 2.70" required>
+        <label style="flex: 1;">Altura (em metros):
+          <input type="number" id="altura" step="0.01" min="0" max="10" placeholder="EX: 2.50" required>
         </label>
       </div>
 
       <label>Tecido:
-        <input type="text" id="tecido" list="tecidos" style="text-transform:uppercase" required>
+        <input type="text" id="tecido" list="tecidos" style="text-transform:uppercase" placeholder="Informe o tecido da cortina" required>
         <datalist id="tecidos">
           <option value="LINHO MESCLADO">
           <option value="LINHO OFF-WHITE">
@@ -216,13 +216,13 @@
         </datalist>
       </label>
 
-      <label>Bainha (cm):
-        <input type="number" id="bainha" required min="0" step="1" oninput="this.value = this.value.replace(/\D/g,'')">
+      <label>Bainha (em centímetros):
+        <input type="number" id="bainha" required min="0" step="1" placeholder="EX: 20CM" oninput="this.value = this.value.replace(/\D/g,'')">
       </label>
 
       <label>Puxador:
         <select id="puxador" required>
-          <option value="">Selecione</option>
+          <option value="">Selecione uma opção</option>
           <option>S/PUXADOR</option>
           <option>C/PUXADOR</option>
         </select>
@@ -247,7 +247,7 @@
         </label>
 
         <label>Tecido do Forro:
-          <input type="text" id="tecidoForro" list="forros" style="text-transform:uppercase">
+          <input type="text" id="tecidoForro" list="forros" placeholder="Informe o tecido do forro" style="text-transform:uppercase">
           <datalist id="forros">
             <option value="BLACKOUT">
             <option value="MICROFIBRA">
@@ -333,7 +333,7 @@
       return;
     }
 
-    let descricao = `${modelo} ${proporcao} ${abertura} ${largura} X ${altura} ${tecido}`;
+    let descricao = `${modelo} ${proporcao} ${abertura} ${largura}M X ${altura}M ${tecido}`;
     if (puxador === 'C/PUXADOR') descricao += ` ${puxador}`;
     descricao += ` BAINHA ${bainha}CM`;
 
@@ -363,7 +363,7 @@ function atualizarTabela() {
 
     // Botão excluir
     const btnDel = document.createElement('span');
-    btnDel.innerText = '🗑️';
+    btnDel.innerText = '❌';
     btnDel.title = 'Excluir';
     btnDel.className = 'delete-btn';
     btnDel.style.marginRight = '8px';
